@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="loading" lang="fa" data-textdirection="rtl" dir="rtl">
+  <!-- BEGIN: Head-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/ico/favicon.ico' %}">
+	  <meta name="theme-color" content="#5A8DEE">
+    
+    <!-- BEGIN: CSS-->
+    {% include 'base/css.html' %}
+    {% block stylesheet %}{% endblock %}
+    <!-- END: CSS-->
+
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+  <body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-sticky footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+
+    <!-- BEGIN: Header-->
+    {% include 'base/header.html' %}
+    <!-- END: Header-->
+
+
+    <!-- BEGIN: Main Menu-->
+    {% include 'base/menu.html' %}
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+      <div class="content-overlay"></div>
+      <div class="content-wrapper">
+        <div class="content-header row">
+          <div class="content-header-left col-12 mb-2 mt-1">
+            <div class="row breadcrumbs-top">
+              {% block links %}{% endblock %}
+            </div>
+          </div>
+        </div>
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+    <!-- END: Content-->
+
+
+    <!-- BEGIN: Footer-->
+    {% include 'base/footer.html' %}
+    <!-- END: Footer-->
+
+    <!-- BEGIN: JS-->
+    {% include 'base/js.html' %}
+    {% block javascript %}{% endblock %}
+    <!-- END: JS-->
+
+  </body>
+  <!-- END: Body-->
+</html>
