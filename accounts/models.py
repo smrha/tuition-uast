@@ -3,13 +3,18 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
+    DEGREE_CHOICES = (
+        ('کارشناسی', 'کارشناسی'),
+        ('کارشناسی ارشد', 'کارشناسی ارشد'),
+        ('دکتری', 'دکتری')
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    p_id = models.IntegerField(default=0)
+    p_id = models.CharField(max_length=10, blank=True)
     f_name = models.CharField(max_length=16, blank=True)
     birthday = models.IntegerField(default=0)
-    n_id = models.IntegerField(default=0)
-    file_number = models.IntegerField(default=0)
-    degree = models.CharField(max_length=64, blank=True)
+    n_id = models.CharField(max_length=10, blank=True)
+    file_number = models.CharField(max_length=16, blank=True)
+    degree = models.CharField(max_length=64, choices=DEGREE_CHOICES, default='ma')
     field = models.CharField(max_length=64, blank=True)
     university = models.CharField(max_length=64, blank=True)
     rank = models.CharField(max_length=32, blank=True)

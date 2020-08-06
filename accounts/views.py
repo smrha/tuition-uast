@@ -2,8 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from .models import Lesson
-from .forms import LoginForm
+from .models import UserProfile, Lesson
+from .forms import LoginForm, TeacherEditForm
 
 def index(request):
     return render(request, 'accounts/index.html')
@@ -36,3 +36,22 @@ def teacher_detail(request, pk):
     teacher = User.objects.get(id=pk)
     lessons = Lesson.objects.filter(user=pk)
     return render(request, 'accounts/teacher_detail.html', {'teacher': teacher, 'lessons': lessons})
+
+def teacher_edit(request, pk):
+    user = User.objects.get(id=pk)
+    profile = UserProfile.objects.get(user=pk)
+    form = TeacherEditForm(instance=profile)
+    if request.method == "POST":
+        form = TeacherEditForm(request.POST)
+        profile = form
+        if profile.is_valid():
+            profile.save(form)
+            return redirect('/account/teachers')
+        else:
+            return redirect('/')
+    else:             
+        context = {
+            'form': form,
+            'user': user
+        }
+        return render(request, 'accounts/teacher_edit.html', context)

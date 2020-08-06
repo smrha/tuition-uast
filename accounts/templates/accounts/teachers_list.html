@@ -56,7 +56,10 @@
                                             <td>{{ teacher.userprofile.n_id }}</td>
                                             <td>{{ teacher.userprofile.field }}</td>
                                             <td>{{ teacher.userprofile.degree }}</td>
-                                            <td><a href="{% url 'teacher_detail'  teacher.id  %}"><i class="badge-circle badge-circle-light-secondary bx bx-envelope font-medium-1"></i></a></td>
+                                            <td>
+                                                <a href="{% url 'teacher_detail'  teacher.id  %}"><i class="badge-circle badge-circle-light-secondary bx bx-show font-medium-1"></i></a>
+                                                <a href="{% url 'teacher_edit'  teacher.id  %}"><i class="badge-circle badge-circle-light-secondary bx bx-edit font-medium-1"></i></a>
+                                            </td>
                                         </tr>
                                         {% endfor %}
                                 </table>

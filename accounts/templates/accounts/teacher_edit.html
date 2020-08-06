@@ -1,0 +1,145 @@
+{% extends 'base/base.html' %}
+
+<!-- TITLE -->
+{% block title %}title{% endblock %}
+
+<!-- CSS -->
+{% block stylesheet %}
+
+{% endblock %}
+
+<!-- LINKS -->
+{% block links %}
+<div class="col-12">
+  <h5 class="content-header-title float-left pr-1">عنوان صفحه</h5>
+  <div class="breadcrumb-wrapper">
+    <ol class="breadcrumb p-0 mb-0">
+      <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+      </li>
+      <li class="breadcrumb-item active">نام صفحه</li>
+    </ol>
+  </div>
+</div>
+{% endblock %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="content-body">
+  <section id="basic-datatable">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">مشخصات استاد</h4>
+          </div>
+          <div class="card-content">
+            <div class="card-body card-dashboard">
+              <form class="form form-vertical" method="POST">
+                {% csrf_token %}
+                <div class="form-body">
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">نام</label>
+                      <div>{{ user.first_name }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">نام خانوادگی</label>
+                      <div>{{ user.last_name }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">نام پدر</label>
+                      {{ form.f_name }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">شماره شناسنامه</label>
+                      {{ form.p_id }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">کد ملی</label>
+                      {{ form.n_id }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">سال تولد</label>
+                      {{ form.birthday }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">کد پرونده مدرسی</label>
+                      {{ form.file_number }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">رشته</label>
+                      {{ form.field }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">مقطع تحصیلی</label>
+                      {{ form.degree }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">دانشگاه</label>
+                      {{ form.university }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">رتبه علمی</label>
+                      {{ form.rank }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">سابقه تدریس</label>
+                      {{ form.t_year }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">شغل</label>
+                      {{ form.job }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">شماره تلفن</label>
+                      {{ form.phone }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">شماره تلفن همراه</label>
+                      {{ form.mobile }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">شماره حساب</label>
+                      {{ form.account }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">بانک</label>
+                      {{ form.bank }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <label for="">آدرس</label>
+                      {{ form.address }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12  d-flex justify-content-end">
+                      <button class="btn btn-primary mr-1 mb-1" type="submit">ذخیره</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+<!-- JS -->
+{% block javascript %}
+
+{% endblock %}
