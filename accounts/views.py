@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import UserProfile, Lesson
-from .forms import LoginForm, TeacherEditForm
+from .forms import LoginForm, TeacherEditForm, LessonForm
+from django.contrib import messages
 
 def index(request):
     return render(request, 'accounts/index.html')
@@ -40,18 +41,27 @@ def teacher_detail(request, pk):
 def teacher_edit(request, pk):
     user = User.objects.get(id=pk)
     profile = UserProfile.objects.get(user=pk)
-    form = TeacherEditForm(instance=profile)
+    form = TeacherEditForm(request.POST or None, instance=profile)
     if request.method == "POST":
-        form = TeacherEditForm(request.POST)
-        profile = form
-        if profile.is_valid():
-            profile.save(form)
+        if form.is_valid():
+            form.save()
             return redirect('/account/teachers')
-        else:
-            return redirect('/')
     else:             
         context = {
             'form': form,
             'user': user
         }
         return render(request, 'accounts/teacher_edit.html', context)
+
+def lesson_add(request, pk):
+    user = User.objects.get(id=pk)
+    form = LessonForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect('/account/teachers') 
+    else:
+        context = {
+            'form': form
+        }
+        return render(request, 'accounts/add_lesson.html', context)

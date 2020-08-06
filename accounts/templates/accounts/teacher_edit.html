@@ -39,12 +39,12 @@
                 <div class="form-body">
                   <div class="row form-group">
                     <div class="col-lg-4 col-md-12 col-sm-12">
-                      <label for="">نام</label>
-                      <div>{{ user.first_name }}</div>
+                      <label for=""> نام و نام خانوادگی</label>
+                      <div>{{ user.first_name }} {{ user.last_name }}</div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
-                      <label for="">نام خانوادگی</label>
-                      <div>{{ user.last_name }}</div>
+                      <label for="">جنسیت</label>
+                      <div>{{ form.sex }}</div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
                       <label for="">نام پدر</label>
