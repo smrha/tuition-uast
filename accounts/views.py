@@ -45,7 +45,7 @@ def teacher_edit(request, pk):
     if request.method == "POST":
         if form.is_valid():
             form.save()
-            return redirect('/account/teachers')
+            return redirect(f'/account/teachers/{pk}')
     else:             
         context = {
             'form': form,
@@ -54,14 +54,40 @@ def teacher_edit(request, pk):
         return render(request, 'accounts/teacher_edit.html', context)
 
 def lesson_add(request, pk):
-    user = User.objects.get(id=pk)
+    form_user = User.objects.get(id=pk)
     form = LessonForm(request.POST or None)
     if request.method == "POST":
+        print(form.is_valid())
         if form.is_valid():
-            form.save()
-            return redirect('/account/teachers') 
+            cd = form.cleaned_data
+            new = Lesson(
+                user=form_user,
+                course_title=cd['course_title'],
+                grade=cd['grade'],
+                lesson_title=cd['lesson_title'],
+                theorical_unit=cd['theorical_unit'],
+                practical_unit=cd['practical_unit'],
+                theorical_time=cd['theorical_time'],
+                practical_time=cd['practical_time'],
+                group=cd['group']
+            )
+            new.save()
+            return redirect(f'/account/teachers/{pk}') 
     else:
         context = {
             'form': form
         }
         return render(request, 'accounts/add_lesson.html', context)
+
+def lesson_edit(request, pk):
+    lesson = Lesson.objects.get(id=pk)
+    form = LessonForm(request.POST or None, instance=lesson)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect(f'/account/teachers/{lesson.user_id}')
+    else:
+        context = {
+            'form': form
+        }
+        return render(request, 'accounts/edit_lesson.html', context)

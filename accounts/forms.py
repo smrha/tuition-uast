@@ -112,41 +112,42 @@ class TeacherEditForm(forms.ModelForm):
 
 
 class LessonForm(forms.ModelForm):
-        course_title = forms.CharField(widget=forms.TextInput(attrs={
-            'class':'form-control text-left',
-            'placeholder':'عنوان دوره'
-        }))
-        grade = forms.ChoiceField(widget=forms.Select(attrs={
-            'class':'form-control text-left',
-            'placeholder':'عنوان دوره'
-        }), choices=GRADE_CHOICES)
-        lesson_title = forms.CharField(widget=forms.TextInput(attrs={
-            'class':'form-control text-left',
-            'placeholder':'عنوان درس'
-        }))
-        theorical_unit = forms.IntegerField(widget=forms.NumberInput(attrs={
-            'class':'form-control text-left',
-            'placeholder':'تعداد واحد نظری'
-        }))
-        practical_unit = forms.IntegerField(widget=forms.NumberInput(attrs={
-            'class':'form-control text-left',
-            'placeholder':'تعداد واحد عملی'
-        }))
-        theorical_time = forms.IntegerField(widget=forms.NumberInput(attrs={
-            'class':'form-control text-left',
-            'placeholder':'ساعت نظری'
-        }))
-        practical_time = forms.IntegerField(widget=forms.NumberInput(attrs={
-            'class':'form-control text-left',
-            'placeholder':'ساعت عملی'
-        }))
-        group = forms.IntegerField(widget=forms.NumberInput(attrs={
-            'class':'form-control text-left',
-            'placeholder':'گروه'
-        }))
-        class Meta():
-            model = Lesson
-            fields = [
-                'course_title', 'grade', 'lesson_title', 'theorical_unit', 'theorical_time',
-                'practical_unit', 'practical_time', 'group'
-            ]
+    # user = forms.CharField(required=False)
+    course_title = forms.CharField(widget=forms.TextInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'عنوان دوره'
+    }))
+    grade = forms.ChoiceField(widget=forms.Select(attrs={
+        'class':'form-control text-left',
+        'placeholder':'عنوان دوره'
+    }), choices=GRADE_CHOICES)
+    lesson_title = forms.CharField(widget=forms.TextInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'عنوان درس'
+    }))
+    theorical_unit = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'تعداد واحد نظری'
+    }))
+    practical_unit = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'تعداد واحد عملی'
+    }))
+    theorical_time = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'ساعت نظری'
+    }))
+    practical_time = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'ساعت عملی'
+    }))
+    group = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'گروه'
+    }))
+    class Meta():
+        model = Lesson
+        fields = [
+            'course_title', 'grade', 'lesson_title', 'theorical_unit', 'theorical_time',
+            'practical_unit', 'practical_time', 'group'
+        ]
