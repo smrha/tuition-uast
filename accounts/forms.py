@@ -103,11 +103,26 @@ class TeacherEditForm(forms.ModelForm):
         'placeholder':'جنسیت'
     }), choices=SEX_CHOICES)
 
+    theorical_pay = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'حق التدریس نظری'
+    }))
+
+    practical_pay = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'حق التدریس عملی'
+    }))
+
+    sign = forms.ImageField(widget=forms.FileInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'امضا'
+    }))
+
     class Meta():
         model = UserProfile
         fields = [
             'p_id', 'f_name', 'n_id', 'birthday', 'file_number', 'degree', 'university', 'field', 'rank',
-            'job', 'address', 't_year', 'phone', 'mobile', 'account', 'bank', 'sex'
+            'job', 'address', 't_year', 'phone', 'mobile', 'account', 'bank', 'sex', 'theorical_pay', 'practical_pay', 'sign'
         ]
 
 
@@ -119,7 +134,7 @@ class LessonForm(forms.ModelForm):
     }))
     grade = forms.ChoiceField(widget=forms.Select(attrs={
         'class':'form-control text-left',
-        'placeholder':'عنوان دوره'
+        'placeholder':'مقطع تحصیلی'
     }), choices=GRADE_CHOICES)
     lesson_title = forms.CharField(widget=forms.TextInput(attrs={
         'class':'form-control text-left',

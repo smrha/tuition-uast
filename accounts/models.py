@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
@@ -41,6 +42,9 @@ class UserProfile(models.Model):
     account = models.IntegerField(default=0)
     bank = models.CharField(max_length=16, blank=True)
     sex = models.CharField(max_length=8, choices=SEX_CHOICES, default='آقا')
+    theorical_pay = models.IntegerField(default=0)
+    practical_pay = models.IntegerField(default=0)
+    sign = models.ImageField(null=True, blank=True)
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
@@ -58,3 +62,8 @@ class Lesson(models.Model):
     theorical_time = models.IntegerField(default=0)
     practical_time = models.IntegerField(default=0)
     group = models.IntegerField(default=1)
+
+class Lessonaccepted(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)

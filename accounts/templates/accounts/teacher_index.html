@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+
+<!-- TITLE -->
+{% block title %}خانه{% endblock %}
+
+<!-- CSS -->
+{% block stylesheet %}
+
+<!-- LINKS -->
+{% block links %}
+<div class="col-12">
+  <h5 class="content-header-title float-left pr-1">داشبورد</h5>
+  <div class="breadcrumb-wrapper">
+    <ol class="breadcrumb p-0 mb-0">
+      <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+      </li>
+      <li class="breadcrumb-item active">استاد {{ request.user.first_name }} {{ request.user.last_name }}</li>
+    </ol>
+  </div>
+</div>
+{% endblock %}
+    
+{% endblock %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="content-body">
+    <section>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">دروس شما</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body card-dashboard">
+                    <div class="table-responsive">
+                        <table class="table zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>عنوان دوره</th>
+                                    <th>مقطع</th>
+                                    <th>عنوان درس</th>
+                                    <th>واحد عملی</th>
+                                    <th>واحد نظری</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for lesson in lessons %}
+                                <tr>
+                                    <td>{{ lesson.course_title }}</td>
+                                    <td>{{ lesson.grade }}</td>
+                                    <td>{{ lesson.lesson_title }}</td>                                        
+                                    <td>{{ lesson.practical_unit }}</td>
+                                    <td>{{ lesson.theorical_unit }}</td> 
+                                    <td><a href="{% url 'lesson_accept' lesson.id %}"><i class="badge-circle badge-circle-light-secondary bx bx-show font-medium-1"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
+
+<!-- JS -->
+{% block javascript %}
+    
+{% endblock %}

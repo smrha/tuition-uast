@@ -34,7 +34,7 @@
           </div>
           <div class="card-content">
             <div class="card-body card-dashboard">
-              <form class="form form-vertical" method="POST">
+              <form class="form form-vertical" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-body">
                   <div class="row form-group">
@@ -108,19 +108,31 @@
                     </div>
                   </div>
                   <div class="row form-group">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="col-lg-3 col-md-12 col-sm-12">
                       <label for="">شماره حساب</label>
                       {{ form.account }}
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="col-lg-3 col-md-12 col-sm-12">
                       <label for="">بانک</label>
                       {{ form.bank }}
                     </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">حق التدریس نظری</label>
+                      {{ form.theorical_pay }}
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">حق التدریس عملی</label>
+                      {{ form.practical_pay }}
+                    </div>
                   </div>
                   <div class="row form-group">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-9 col-md-12 col-sm-12">
                       <label for="">آدرس</label>
                       {{ form.address }}
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for=""></label>
+                      {{ form.sign }}
                     </div>
                   </div>
                   <div class="row form-group">

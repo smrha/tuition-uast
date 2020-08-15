@@ -1,14 +1,27 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .models import UserProfile, Lesson
+from .models import UserProfile, Lesson, Lessonaccepted
 from .forms import LoginForm, TeacherEditForm, LessonForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .decorators import unauthenticated_user, allowed_user, admin_only
 
+@login_required(login_url='login')
+@admin_only
 def index(request):
     return render(request, 'accounts/index.html')
 
+@login_required(login_url='login')
+def teacher_index(request):
+    lessons = Lesson.objects.filter(user=request.user)
+    context = { 
+        'lessons': lessons
+    }
+    return render(request, 'accounts/teacher_index.html', context)
+
+@unauthenticated_user
 def user_login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -24,10 +37,17 @@ def user_login(request):
                 else:
                     return HttpResponse('Disabled account.')
             else:
-                return HttpResponse('Invalid login.')
+                return redirect('/account')
     else:
         form = LoginForm()
-        return render(request, 'accounts/login.html', {'form': form})
+        context = {
+            'form': form
+            }
+        return render(request, 'accounts/login.html', context)
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
 
 def teachers_list(request):
     teachers = User.objects.all
@@ -41,7 +61,8 @@ def teacher_detail(request, pk):
 def teacher_edit(request, pk):
     user = User.objects.get(id=pk)
     profile = UserProfile.objects.get(user=pk)
-    form = TeacherEditForm(request.POST or None, instance=profile)
+    form = TeacherEditForm(request.POST or None, request.FILES or None, instance=profile)
+    print(form.is_valid())
     if request.method == "POST":
         if form.is_valid():
             form.save()
@@ -91,3 +112,27 @@ def lesson_edit(request, pk):
             'form': form
         }
         return render(request, 'accounts/edit_lesson.html', context)
+
+def lesson_accept(request, pk):
+    lesson = Lesson.objects.get(id=pk) 
+    theorical_total = lesson.theorical_time * request.user.userprofile.theorical_pay
+    practical_total = lesson.practical_time * request.user.userprofile.practical_pay
+    total = theorical_total + practical_total
+    if request.method == 'POST':
+        if Lessonaccepted.objects.filter(lesson_id=pk).exists():
+            return redirect('/account/home')
+        else:
+            if request.POST.get('accept'):
+                acc = Lessonaccepted(user=request.user, lesson=lesson)
+                acc.save()
+                return redirect('/account/home')
+            else:
+                return redirect('/account/home')
+    else:       
+        context = {
+            'lesson': lesson,
+            'theorical_total': theorical_total,
+            'practical_total': practical_total,
+            'total': total
+        }
+        return render(request, 'accounts/lesson_accept.html', context)

@@ -1,0 +1,119 @@
+{% extends 'base/base.html' %}
+
+<!-- TITLE -->
+{% block title %}خانه{% endblock %}
+
+<!-- CSS -->
+{% block stylesheet %}
+
+<!-- LINKS -->
+{% block links %}
+<div class="col-12">
+  <h5 class="content-header-title float-left pr-1">داشبورد</h5>
+  <div class="breadcrumb-wrapper">
+    <ol class="breadcrumb p-0 mb-0">
+      <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+      </li>
+      <li class="breadcrumb-item active">استاد {{ request.user.first_name }} {{ request.user.last_name }}</li>
+    </ol>
+  </div>
+</div>
+{% endblock %}
+    
+{% endblock %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="content-body">
+    <section>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">کلاس {{ lesson.lesson_title }}</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body card-dashboard">
+                  <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">عنوان دوره</label>
+                      <div>{{ lesson.course_title }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">مقطع تحصیلی</label>
+                      <div>{{ lesson.grade }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">عنوان درس</label>
+                      <div>{{ lesson.lesson_title }}</div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">واحد نظری</label>
+                      <div>{{ lesson.theorical_unit }}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">واحد عملی</label>
+                      <div>{{ lesson.practical_unit }}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">ساعت نظری</label>
+                      <div>{{ lesson.theorical_time }}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">ساعت عملی</label>
+                      <div>{{ lesson.practical_time }}</div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">حق التدریس هر ساعت نظری</label>
+                      <div>{{ request.user.userprofile.theorical_pay }} ریال</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">حق التدریس هر ساعت عملی</label>
+                      <div>{{ request.user.userprofile.practical_pay }} ریال</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">گروه</label>
+                      <div>{{ lesson.group }}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">جمع کل</label>
+                      <div>{{ total }}</div>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- <div class="row"> -->
+                    <form method="POST" class="form form-vertical">
+                      {% csrf_token %}
+                      <fieldset>
+                        <div class="checkbox form-group">
+                          <input name="accept" type="checkbox" class="checkbox-input" id="checkbox1" >
+                          <label for="checkbox1">تایید درس</label>
+                        </div>
+                      </fieldset>
+                      <div class="row form-group">
+                        <div class="col-lg-12 col-md-12 col-sm-12  d-flex ">
+                          <button class="btn btn-primary mr-1 mb-1" type="submit">ذخیره</button>
+                        </div>
+                    </div>
+                    </form>
+                  <!-- </div> -->
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
+
+<!-- JS -->
+{% block javascript %}
+    
+{% endblock %}
