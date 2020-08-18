@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+
+<!-- TITLE -->
+{% block title %}title{% endblock %}
+
+<!-- CSS -->
+{% block stylesheet %}
+
+{% endblock %}
+
+<!-- LINKS -->
+{% block links %}
+<div class="col-12">
+  <h5 class="content-header-title float-left pr-1">امضای استاد</h5>
+  <div class="breadcrumb-wrapper">
+    <ol class="breadcrumb p-0 mb-0">
+      <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+      </li>
+      <li class="breadcrumb-item active">بارگزاری امضای استاد</li>
+    </ol>
+  </div>
+</div>
+{% endblock %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="content-body">
+  <section id="basic-datatable">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">مشخصات استاد</h4>
+          </div>
+          <div class="card-content">
+            <div class="card-body card-dashboard">
+              <form class="form form-vertical" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-body">
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for=""> نام و نام خانوادگی</label>
+                      <div>{{ user.first_name }} {{ user.last_name }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">امضای فعلی</label>
+                      <div><img src="{{ request.user.userprofile.sign.url }}" alt="" width="150px" height="150px"></div>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">بارگزاری امضا</label>
+                      {{ form.sign }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12  d-flex justify-content-end">
+                      <button class="btn btn-primary mr-1 mb-1" type="submit">ذخیره</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+<!-- JS -->
+{% block javascript %}
+
+{% endblock %}

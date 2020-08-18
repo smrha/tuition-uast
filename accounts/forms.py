@@ -113,17 +113,24 @@ class TeacherEditForm(forms.ModelForm):
         'placeholder':'حق التدریس عملی'
     }))
 
-    sign = forms.ImageField(widget=forms.FileInput(attrs={
-        'class':'form-control text-left',
-        'placeholder':'امضا'
-    }))
-
     class Meta():
         model = UserProfile
         fields = [
             'p_id', 'f_name', 'n_id', 'birthday', 'file_number', 'degree', 'university', 'field', 'rank',
-            'job', 'address', 't_year', 'phone', 'mobile', 'account', 'bank', 'sex', 'theorical_pay', 'practical_pay', 'sign'
+            'job', 'address', 't_year', 'phone', 'mobile', 'account', 'bank', 'sex', 'theorical_pay', 'practical_pay'
         ]
+
+class SignForm(forms.ModelForm):
+    sign = forms.ImageField(widget=forms.FileInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'امضا'
+    }))
+    class Meta():
+        model = UserProfile
+        fields = [
+            'sign',
+        ]
+          
 
 
 class LessonForm(forms.ModelForm):

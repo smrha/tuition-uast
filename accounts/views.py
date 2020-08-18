@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import UserProfile, Lesson, Lessonaccepted
-from .forms import LoginForm, TeacherEditForm, LessonForm
+from .forms import LoginForm, TeacherEditForm, LessonForm, SignForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user, allowed_user, admin_only
@@ -17,8 +17,8 @@ def index(request):
 def teacher_index(request):
     lessons = Lesson.objects.filter(user=request.user)
     context = { 
-        'lessons': lessons
-    }
+        'lessons': lessons,
+   }
     return render(request, 'accounts/teacher_index.html', context)
 
 @unauthenticated_user
@@ -49,6 +49,8 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
+@login_required(login_url='login')
+@admin_only
 def teachers_list(request):
     teachers = User.objects.all
     return render(request, 'accounts/teachers_list.html', {'teachers': teachers})
@@ -61,8 +63,7 @@ def teacher_detail(request, pk):
 def teacher_edit(request, pk):
     user = User.objects.get(id=pk)
     profile = UserProfile.objects.get(user=pk)
-    form = TeacherEditForm(request.POST or None, request.FILES or None, instance=profile)
-    print(form.is_valid())
+    form = TeacherEditForm(request.POST or None, instance=profile)
     if request.method == "POST":
         if form.is_valid():
             form.save()
@@ -73,6 +74,18 @@ def teacher_edit(request, pk):
             'user': user
         }
         return render(request, 'accounts/teacher_edit.html', context)
+
+def teacher_sign(request):
+    profile = UserProfile.objects.get(user=request.user)
+    form = SignForm(request.POST or None, request.FILES or None, instance=profile)
+    if request.method == 'POST':
+        if form.is_valid:
+            form.save()
+            return redirect('/account')
+    context = {
+        'form': form
+    }
+    return render(request, 'accounts/teacher_sign.html', context)
 
 def lesson_add(request, pk):
     form_user = User.objects.get(id=pk)

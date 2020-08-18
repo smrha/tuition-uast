@@ -43,6 +43,7 @@
                                     <th>عنوان درس</th>
                                     <th>واحد عملی</th>
                                     <th>واحد نظری</th>
+                                    <th>وضعیت</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
@@ -53,7 +54,13 @@
                                     <td>{{ lesson.grade }}</td>
                                     <td>{{ lesson.lesson_title }}</td>                                        
                                     <td>{{ lesson.practical_unit }}</td>
-                                    <td>{{ lesson.theorical_unit }}</td> 
+                                    <td>{{ lesson.theorical_unit }}</td>
+                                    <td>{% if lesson.lessonaccepted is not None %}
+                                        تایید شده
+                                        {% else %}
+                                        تایید نشده
+                                        {% endif %}
+                                    </td>
                                     <td><a href="{% url 'lesson_accept' lesson.id %}"><i class="badge-circle badge-circle-light-secondary bx bx-show font-medium-1"></i></a></td>
                                 </tr>
                                 {% endfor %}
@@ -66,7 +73,74 @@
         </div>
       </div>
     </section>
-  </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">قرارداد</h4>
+          </div>
+          <div class="card-content">
+              <div class="card-body card-dashboard">
+                  <div class="table-responsive">
+                    <h2 class="text-center">قرارداد حق التدریس</h2>
+                    <p>
+                      این قرارداد به استناد آیین نامه تدریس موقت و حق التدریس دانشگاهها بین موسسه /مرکز آموزش علمی – کاربردی جهاد دانشگاهی شعبه کرج که از این پس مرکز نامیده می شود و {{ request.user.userprofile.sex }} {{ request.user.first_name }} {{ request.user.last_name }} با مشخصات ذیل که صلاحیت تدریس وی توسط مرکز امور هیات علمی مدرسان دانشگاه جامع علمی – کاربردی تایید شده است و در این قرارداد مدرس نامیده می شود به منظور تدریس در دروس مشروحه ذیل در نیمسال دوم تحصیلی 1399 – 1398 طبق مقررات دانشگاهها و موسسات آموزش عالی کشور با شرایط زیر منعقد می گردد.
+                     
+                    </p>
+                    <h6>مشخصات مدرس : </h6>
+                    <p>	1- نام خانوادگی:  {{ request.user.first_name }} نام: {{ request.user.last_name }} شماره شناسنامه: {{ request.user.userprofile.p_name }} نام پدر: {{ request.user.userprofile.f_name }} تاریخ تولد: {{ request.user.userprofile.birth_day }} کد ملی: {{ request.user.userprofile.n_id }} شماره پرونده مدرسی /کد رهگیری: {{ request.user.userprofile.file_number }}</p>
+                    <p>2-	آخرین مدرک تحصیلی: {{ request.user.userprofile.degree }}</p>
+                    <table class="table zero-configuration">
+                      <thead>
+                          <tr>
+                              <th>ردیف</th>
+                              <th>عنوان دوره</th>
+                              <th>مقطع</th>
+                              <th>عنوان درس</th>
+                              <th>واحد عملی</th>
+                              <th>واحد نظری</th>
+                              <th>ساعت عملی</th>
+                              <th>ساعت نظری</th>
+                              <th>گروه</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for lesson in lessons %}
+                            {% if lesson.lessonaccepted is not None %}
+                              <tr>
+                                  <td></td>
+                                  <td>{{ lesson.course_title }}</td>
+                                  <td>{{ lesson.grade }}</td>
+                                  <td>{{ lesson.lesson_title }}</td>                                        
+                                  <td>{{ lesson.practical_unit }}</td>
+                                  <td>{{ lesson.theorical_unit }}</td>
+                                  <td>{{ lesson.practical_time }}</td>
+                                  <td>{{ lesson.theorical_time }}</td>
+                                  <td>{{ lesson.group }}</td>
+                              </tr>
+                            {% endif %}
+                          {% endfor %}
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>                                        
+                            <td>{{ lesson.practical_unit }}</td>
+                            <td>{{ lesson.theorical_unit }}</td>
+                            <td>{{ lesson.practical_time }}</td>
+                            <td>{{ lesson.theorical_time }}</td>
+                            <td>{{ lesson.group }}</td>
+                        </tr>
+                  </table>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 {% endblock %}
 
 <!-- JS -->

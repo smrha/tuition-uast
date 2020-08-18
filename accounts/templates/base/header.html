@@ -125,7 +125,7 @@
             </ul>
           </li> -->
           <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-              <div class="user-nav d-sm-flex d-none"><span class="user-name">تونی استارک</span><span class="user-status text-muted">آماده</span></div><span><img class="round" src="{% static 'assets/images/portrait/small/avatar-s-11.jpg' %}" alt="avatar" height="40" width="40"></span></a>
+              <div class="user-nav d-sm-flex d-none"><span class="user-name">{{ request.user.last_name }}</span><span class="user-status text-muted">{{ request.user.first_name }}</span></div><span><img class="round" src="{% static 'assets/images/portrait/small/avatar-s-11.png' %}" alt="avatar" height="40" width="40"></span></a>
             <div class="dropdown-menu pb-0">
               <div class="dropdown-divider mb-0"></div><a class="dropdown-item" href="{% url 'logout' %}"><i class="bx bx-power-off mr-50"></i> خروج</a>
             </div>
