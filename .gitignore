@@ -1,7 +1,7 @@
 # created by virtualenv automatically
 build/*
-tutorial/settings.py
-db.sqlite3
-tuition-uast.sock
-static/*
-accounts/static/assets/fonts/LivIconsEvo/*
+# tutorial/settings.py
+# db.sqlite3
+# tuition-uast.sock
+# static/*
+# accounts/static/assets/fonts/LivIconsEvo/*

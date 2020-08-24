@@ -58,7 +58,11 @@ def teachers_list(request):
 def teacher_detail(request, pk):
     teacher = User.objects.get(id=pk)
     lessons = Lesson.objects.filter(user=pk)
-    return render(request, 'accounts/teacher_detail.html', {'teacher': teacher, 'lessons': lessons})
+    context = {
+        'teacher': teacher,
+        'lessons': lessons,
+    }
+    return render(request, 'accounts/teacher_detail.html', context)
 
 def teacher_edit(request, pk):
     user = User.objects.get(id=pk)
@@ -74,6 +78,16 @@ def teacher_edit(request, pk):
             'user': user
         }
         return render(request, 'accounts/teacher_edit.html', context)
+
+def print_tuition(request, pk):
+    teacher = User.objects.get(id=pk)
+    # TODO calculate sum
+    lessons = Lesson.objects.filter(user=pk)
+    context = {
+        'teacher': teacher,
+        'lessons': lessons,
+    }
+    return render(request, 'accounts/print_tuition.html', context)
 
 def teacher_sign(request):
     profile = UserProfile.objects.get(user=request.user)

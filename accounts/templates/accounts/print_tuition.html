@@ -1,0 +1,100 @@
+{% extends 'base/print-base.html' %}
+{% load static %}
+{% block title %}قرارداد حق التدریس{% endblock %}
+{% block page %}
+<style>
+@page {
+    size: 210mm 297mm;
+}
+</style>
+{% endblock %}
+{% block body %}
+<body data-screen='portrait'>
+    <div class="margin" style="border:none">
+        <div>
+            <div class="tuition-title">
+                <h2 style="font-size: 13pt;">قرارداد حق التدریس</h2>
+            </div>
+            <div class="tuition-body">                
+                اين قرارداد به استناد آيين نامه تدريس موقت و حق التدريس دانشگاهها بين موسسه/مركز آموزش علمي  -  كاربردي  جهاددانشگاهي 
+                شعبه كرج كه از اين پس مركز ناميده مي شود و {{ teacher.first_name }} {{ teacher.last_name }} با  مشخصات ذيل كه صلاحيت تدريس 
+                وي توسط مركز امور هيات علمي مدرسان دانشگاه جامع علمي – كاربردي تاييد شده است و در اين قرارداد مدرس ناميده مي شود 
+                به منظور تدريس در دروس مشروحه ذيل در نيمسال دوم سال تحصیلی 1399  – 1398   طبق مقررات دانشگاهها و موسسات 
+                آموزش عالي كشور با شرايط زير منعقد مي گردد :            
+            </div>
+            <div class="tuition-body">
+                <h2 style="font-size: 13pt;">مشخصات مدرس :</h2>
+                1- نام خانوادگی : {{ teacher.last_name }} نام : {{ teacher.first_name }} شماره شناسنامه : {{ teacher.userprofile.p_id }} نام پدر : {{ teacher.userprofile.f_name }} 
+                تاریخ تولد: {{ teacher.userprofile.birthday }} کد ملی {{ teacher.userprofile.n_id }} شماره پرونده مدرسی /کدرهگیری: {{ teacher.userprofile.file_number }}
+
+            </div>
+            <div class="tuition-body">
+                2 -آخرین مدرک تحصیلی : {{ teacher.userprofile.degree }}
+            </div>
+            <div class="tuition-body">
+                3 -رشته تحصیلی {{ teacher.userprofile.degree }} محل اخذ آخرین مدرک تحصیلی {{ teacher.userprofile.university }}
+            </div>
+            <div class="tuition-body">
+                4- رتبه علمی : {{ teacher.userprofile.rank}}
+            </div>
+            <div class="tuition-body">
+                5-وضعیت اشتغال  :  ( شاغل / بازنشسته )    {{ teacher.userprofile.job }}
+            </div>
+            <div class="tuition-body">
+                محل اشتغال فعلی: دانشگاه                                           وزارتخانه یا سازمان ها  دولتی                                                  بخش خصوصی 
+            </div>
+            <div class="tuition-body">
+                6-چنانچه در موسسه /مرکزی شاغل هستید چند ساعت تدریس می نمایید ؟
+            </div>
+            <div class="tuition-body">
+                7-چند سال سابقه تدریس در سایر دانشگاه ها و مراکز دارید .؟ {{ teacher.userprofile.t_year }} سال
+            </div>
+            <div class="tuition-body">
+                8-آدرس : {{ teacher.userprofile.address }} شماره تلفن همراه : {{ teacher.userprofile.mobile }} شماره تلفن ثابت : {{ teacher.userprofile.phone }}
+            </div>
+        </div>
+        <br>
+        <table class="datatable">
+            <thead>
+                <tr>
+                    <th>ردیف</th>
+                    <th>عنوان دوره</th>
+                    <th>مقطع تحصیلی</th>
+                    <th>عنوان درس</th>
+                    <th>عملی</th>
+                    <th>نظری</th>
+                    <th>عملی</th>
+                    <th>نظری</th>
+                    <th>گروه</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lesson in lessons %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ lesson.course_title }}</td>
+                        <td>{{ lesson.grade }}</td>
+                        <td>{{ lesson.lesson_title }}</td>
+                        <td>{{ lesson.practical_unit }}</td>
+                        <td>{{ lesson.theorical_unit }}</td>
+                        <td>{{ lesson.practical_time }}</td>
+                        <td>{{ lesson.theorical_time }}</td>
+                        <td>{{ lesson.group }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4">جمع کل</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="page-break"></div>
+
+</body>
+{% endblock %}
+{% block script %}
+<script>
+    window.print();
+</script>
+{% endblock %}

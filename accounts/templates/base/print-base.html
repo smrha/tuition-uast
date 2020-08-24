@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'assets/css/print.css' %}">
+    <script src="{% static 'assets/js/jquery.js' %}"></script>
+    {% block page %}
+    {% endblock %}
+</head>
+{% block body %}
+
+{% endblock %}
+
+<script>
+$('.card-header').each(function(){
+        th = $(this);
+        he = th.next().height();
+        if (he > 150)
+            th.height(he);
+        else
+            th.height(150);
+            $(".card-header p").css("width","130px");
+
+    });
+</script>
+{% block script %}
+
+{% endblock %}
+</html>

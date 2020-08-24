@@ -1,0 +1,456 @@
+@import url("font/primary-iran-yekan.css");
+body[data-screen='landscape'] {
+    max-width: 270mm;
+}
+
+body[data-screen='portrait'] {
+    max-width: 210mm;
+}
+
+body[data-screen='landscape'] .margin {
+    max-height: 210mm;
+    max-width: 270mm;
+}
+
+body[data-screen='portrait'] .margin {
+    width: 210mm;
+    max-height: 270mm;
+    max-width: 210mm;
+}
+
+body {
+    margin: 0 auto;
+    font-family: 'primary-font';
+    font-size: 1rem;
+}
+
+.margin {
+    /* border: 0.5mm solid black; */
+    margin: 3mm 2mm 3mm 2mm;
+    direction: rtl;
+}
+
+.head-table {
+    width: 100%;
+    text-align: center;
+}
+
+.logo {
+    max-width: 25mm;
+    max-height: 25mm;
+    min-width: 12.5mm;
+    min-height: 12.5mm;
+}
+
+.student-info {
+    border-bottom: 1px solid black;
+    display: flow-root;
+}
+
+.student-info span {
+    font: 9pt 'primary-font';
+}
+
+span {
+    margin-right: 1.25mm;
+}
+
+.title {
+    text-align: left;
+    width: 25mm;
+}
+
+.value {
+    text-align: right;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.term-Title {
+    padding-right: 0.8mm;
+}
+
+@media screen {
+    .margin {
+        margin: 3mm 2mm 3mm 2mm;
+    }
+}
+
+.table {
+    border: 0.5mm solid black;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.noborderbottom {
+    page-break-inside: avoid;
+}
+
+table tr td * {}
+
+table tr td span {}
+
+.studentlesson-detail tbody>tr>th,
+.studentlesson-detail tbody>tr>td {
+    border: 0.5mm solid black;
+}
+
+.studentlesson-detail {
+    width: 100%;
+}
+
+.studentlesson-detail tbody {
+    display: table-row-group;
+}
+
+
+/* .studentlesson-detail tr:nth-child(odd) td {
+    background-color: #f0f0f0;
+} */
+
+.studentlesson-summery {
+    width: 100%;
+}
+
+.light-gray {
+    background-color: #f0f0f0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.width-12 {
+    width: 14mm;
+}
+
+tr,
+td {
+    padding: 20px 10px;
+}
+
+.padding-0 {
+    padding: 0px !important;
+}
+
+.width-2 {
+    width: 2mm;
+}
+
+.width-5 {
+    width: 5mm;
+}
+
+.width-9 {
+    width: 9mm;
+    max-width: 9mm;
+}
+
+.width-48 {
+    width: 51mm;
+}
+
+.width-30 {
+    width: 35mm;
+    max-width: 35mm;
+    min-width: 35mm;
+}
+
+.width-20 {
+    width: 20mm;
+    max-width: 20mm;
+    min-width: 20mm;
+}
+
+.width-5 {
+    width: 5mm;
+}
+
+.width-7 {
+    width: 7mm;
+    max-width: 7mm;
+}
+
+.font-white td {
+    color: white;
+}
+
+.summery-info {
+    width: 33%;
+    float: right;
+}
+
+.term-td {
+    padding: 0;
+    vertical-align: top;
+}
+
+.signature-table {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 8mm;
+    height: 24mm;
+    font-size: 3mm;
+    font-weight: bold;
+}
+
+.signature-table td {
+    width: 50% !important;
+}
+
+.signature-image {
+    width: 30mm;
+    height: 24mm;
+    right: 30mm;
+    top: 0px;
+    position: absolute;
+    z-index: -1;
+    text-align: center;
+}
+
+.signature-image img {
+    max-width: 30mm;
+    max-height: 24mm;
+}
+
+.signature-box {
+    position: relative;
+    height: 24mm;
+    padding-top: 4mm;
+    font-family: 'primary-font';
+}
+
+.studentSummery {
+    width: 100%;
+}
+
+.studentSummery td {
+    width: 33%;
+}
+
+table {
+    width: 100%;
+}
+
+.table td {
+    width: auto;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+tbody {
+    display: table-row-group;
+}
+
+thead {
+    display: table-header-group;
+}
+
+tfoot {
+    display: table-footer-group;
+}
+
+.page-break {
+    page-break-after: always;
+    page-break-inside: avoid;
+}
+
+.studentlesson-detail,
+.studentlesson-detail tr {
+    border: none !important;
+}
+
+.border-l-0 {
+    border-left: none !important;
+}
+
+.border-0 {
+    border: none !important;
+}
+
+.jdlogo {
+    width: 100%;
+}
+
+.noborder {
+    border: 0.25mm solid #000;
+}
+
+.noborder tr,
+.noborder td {
+    border: none !important
+}
+
+.text-blue {
+    color: #080c3c !important
+}
+
+.bold {
+    font-weight: 700 !important;
+}
+
+.titr {
+    background: #080c3c;
+    color: #fff;
+    width: 100%;
+    padding: .01rem;
+    text-align: center;
+    font-family: 'primary-font';
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.rem1 {
+    font-size: 1rem !important;
+}
+
+.rem12 {
+    font-size: 1.2rem !important;
+}
+
+table,
+tr,
+td {
+    border: none !important
+}
+
+.card {
+    width: 100%;
+    height: auto;
+    border: 1px solid #080c3c;
+    float: right;
+    position: relative;
+}
+
+.card-body tr,
+.card-body td {
+    padding: 5px;
+}
+
+.card-header {
+    display: inline-block;
+    position: relative;
+    float: right;
+    min-height: 150px;
+    margin-left: 2%;
+    width: 5%;
+    background-color: #080c3c;
+    color: #fff;
+    text-align: center;
+}
+
+.card-header p {
+    font-size: 1.3rem;
+    line-height: 100%;
+    position: absolute;
+    width: 170px;
+    left: 29%;
+    margin: 0 auto;
+    top: 90%;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+    /* Safari */
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-90deg);
+    /* Firefox */
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-90deg);
+    /* IE */
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-90deg);
+    /* Opera */
+    -o-transform-origin: 0 0;
+    -o-transform: rotate(-90deg);
+    /* Internet Explorer */
+    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.card-body {
+    display: inline-block;
+    float: right;
+    width: 91%;
+    height: auto;
+    margin-left: 2%;
+}
+
+.padding1 {
+    padding: 5px 10px !important;
+}
+
+.card-body ul li {
+    list-style: circle;
+    font-weight: 700;
+    line-height: 1.5em;
+}
+
+table.datatable,
+table.datatable td {
+    border: 1px solid #080c3c !important;
+}
+
+table.datatable thead {
+    color: #000;
+    
+}
+
+table.datatable thead th {
+    border: 1px solid #080c3c !important;
+    padding: .5rem .25rem 0.25rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+table.datatable thead td {
+    padding: .5rem .25rem 0.25rem;
+}
+
+table.datatable .bl2 {
+    border-left: 2px solid #080c3c !important;
+}
+
+input.form-control.percent-input:focus {
+    outline: none;
+}
+
+input.form-control.percent-input:hover {
+    cursor: default;
+}
+
+input.form-control.percent-input {
+    border: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield !important;
+}
+
+input:disabled {
+    color: #000 !important;
+    background: none;
+    text-align: center;
+    width: 100%;
+    font-family: 'primary-font';
+    font-size: 1.2rem;
+}
+
+.tuition-title {
+    text-align: center;
+}
+
+.tuition-body {
+    padding: .5rem .25rem 0.25rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
