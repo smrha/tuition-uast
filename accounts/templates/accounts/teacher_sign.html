@@ -44,7 +44,11 @@
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
                       <label for="">امضای فعلی</label>
-                      <div><img src="{{ request.user.userprofile.sign.url }}" alt="" width="150px" height="150px"></div>
+                      <div>
+                        {% if request.user.userprofile.sign %}
+                        <img src="{{ request.user.userprofile.sign.url }}" alt="" width="150px" height="150px">
+                        {% endif %}
+                      </div>
                     </div>
                   </div>
                   <div class="row form-group">

@@ -5,20 +5,20 @@
 
 <!-- CSS -->
 {% block stylesheet %}
-    
+
 {% endblock %}
 
 <!-- LINKS -->
 {% block links %}
 <div class="col-12">
-    <h5 class="content-header-title float-left pr-1">دروس استاد</h5>
-    <div class="breadcrumb-wrapper">
-      <ol class="breadcrumb p-0 mb-0">
-        <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
-        </li>
-        <li class="breadcrumb-item active">دروس استاد</li>
-      </ol>
-    </div>
+  <h5 class="content-header-title float-left pr-1">دروس استاد</h5>
+  <div class="breadcrumb-wrapper">
+    <ol class="breadcrumb p-0 mb-0">
+      <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+      </li>
+      <li class="breadcrumb-item active">دروس استاد</li>
+    </ol>
+  </div>
 </div>
 {% endblock %}
 
@@ -26,169 +26,178 @@
 {% block content %}
 <div class="content-body">
   <section id="basic-datatable">
-      <div class="row">
-          <div class="col-12">
-              <div class="card">
-                  <div class="card-header">
-                      <h4 class="card-title">مشخصات استاد</h4>
-                      <div class="text-right">
-                        <a href="{{ teacher.id }}/edit" class="btn btn-primary mr-4">ویرایش</a>
-                    </div>
-                  </div>
-                  <div class="card-content">
-                      <div class="card-body card-dashboard">
-                          <div class="row">
-                              <div class="col-lg-3 col-md-12 col-sm-12">
-                                <label for="">نام</label>
-                                <div>{{ teacher.first_name }}</div>
-                              </div>
-                              <div class="col-lg-3 col-md-12 col-sm-12">
-                                <label for="">نام خانوادگی</label>
-                                <div>{{ teacher.last_name }}</div>
-                              </div>
-                              <div class="col-lg-3 col-md-12 col-sm-12">
-                                <label for="">جنسیت</label>
-                                <div>{{ teacher.userprofile.sex }}</div>
-                              </div>
-                              <div class="col-lg-3 col-md-12 col-sm-12">
-                                <label for="">نام پدر</label>
-                                <div>{{ teacher.userprofile.f_name }}</div>
-                              </div>
-                          </div>
-                          <hr>
-                          <div class="row">
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                              <label for="">شماره شناسنامه</label>
-                              <div>{{ teacher.userprofile.p_id }}</div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                              <label for="">کد ملی</label>
-                              <div>{{ teacher.userprofile.n_id }}</div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                              <label for="">سال تولد</label>
-                              <div>{{ teacher.userprofile.birthday }}</div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                              <label for="">شماره پرونده مدرسی</label>
-                              <div>{{ teacher.userprofile.file_number }}</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-12 col-sm-12">
-                              <label for="">رشته تحصیلی</label>
-                              <div>{{ teacher.userprofile.field }}</div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-sm-12">
-                              <label for="">مقطع</label>
-                              <div>{{ teacher.userprofile.degree }}</div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-sm-12">
-                              <label for="">دانشگاه</label>
-                              <div>{{ teacher.userprofile.university }}</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-12 col-sm-12">
-                              <label for="">رتبه علمی</label>
-                              <div>{{ teacher.userprofile.rank }}</div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-sm-12">
-                              <label for="">شغل</label>
-                              <div>{{ teacher.userprofile.job }}</div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-sm-12">
-                              <label for="">سابقه تدریس</label>
-                              <div>{{ teacher.userprofile.t_year }}</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                              <label for="">شماره تلفن</label>
-                              <div>{{ teacher.userprofile.phone }}</div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                              <label for="">شماره تلفن همراه</label>
-                              <div>{{ teacher.userprofile.mobile }}</div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                              <label for="">شماره حساب</label>
-                              <div>{{ teacher.userprofile.account }}</div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                              <label for="">بانک</label>
-                              <div>{{ teacher.userprofile.bank }}</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-8 col-md-12 col-sm-12">
-                              <label for="">آدرس</label>
-                              <div>{{ teacher.userprofile.address }}</div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-sm-12">
-                              <label for="">آدرس</label>
-                              <div><img src="{{ teacher.userprofile.sign.url }}" alt="" width="50px" height="50px"></div>
-                            </div>
-                        </div>
-                      </div>
-                  </div>
-              </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">مشخصات استاد</h4>
+            <div class="text-right">
+              <a href="{{ teacher.id }}/edit" class="btn btn-primary mr-4">ویرایش</a>
+            </div>
           </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">دروس استاد</h4>
-                    <div class="text-right">
-                        <a href="{{ teacher.id }}/add" class="btn btn-primary mr-4">افزودن</a>
-                    </div>
-                    
+          <div class="card-content">
+            <div class="card-body card-dashboard">
+              <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">نام</label>
+                  <div>{{ teacher.first_name }}</div>
                 </div>
-                <div class="card-content">
-                    <div class="card-body card-dashboard">
-                        <div class="table-responsive">
-                            <table class="table zero-configuration">
-                                <thead>
-                                    <tr>
-                                        <th>عنوان دوره</th>
-                                        <th>مقطع</th>
-                                        <th>عنوان درس</th>
-                                        <th>واحد عملی</th>
-                                        <th>واحد نظری</th>
-                                        <!-- <th>ساعت عملی</th>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">نام خانوادگی</label>
+                  <div>{{ teacher.last_name }}</div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">جنسیت</label>
+                  <div>{{ teacher.userprofile.sex }}</div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">نام پدر</label>
+                  <div>{{ teacher.userprofile.f_name }}</div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">شماره شناسنامه</label>
+                  <div>{{ teacher.userprofile.p_id }}</div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">کد ملی</label>
+                  <div>{{ teacher.userprofile.n_id }}</div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">سال تولد</label>
+                  <div>{{ teacher.userprofile.birthday }}</div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">شماره پرونده مدرسی</label>
+                  <div>{{ teacher.userprofile.file_number }}</div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">رشته تحصیلی</label>
+                  <div>{{ teacher.userprofile.field }}</div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">مقطع</label>
+                  <div>{{ teacher.userprofile.degree }}</div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">دانشگاه</label>
+                  <div>{{ teacher.userprofile.university }}</div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">رتبه علمی</label>
+                  <div>{{ teacher.userprofile.rank }}</div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">شغل</label>
+                  <div>{{ teacher.userprofile.job }}</div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">سابقه تدریس</label>
+                  <div>{{ teacher.userprofile.t_year }}</div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">شماره تلفن</label>
+                  <div>{{ teacher.userprofile.phone }}</div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">شماره تلفن همراه</label>
+                  <div>{{ teacher.userprofile.mobile }}</div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">شماره حساب</label>
+                  <div>{{ teacher.userprofile.account }}</div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                  <label for="">بانک</label>
+                  <div>{{ teacher.userprofile.bank }}</div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12">
+                  <label for="">آدرس</label>
+                  <div>{{ teacher.userprofile.address }}</div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">امضا</label>
+                  <div>
+                    {% if teacher.userprofile.sign %}
+                    <img src="{{ teacher.userprofile.sign.url }}" alt="" width="50px" height="50px"></div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="basic-datatable">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">دروس استاد</h4>
+            <div class="text-right">
+              <a href="{{ teacher.id }}/add" class="btn btn-primary mr-4">افزودن</a>
+            </div>
+
+          </div>
+          <div class="card-content">
+            <div class="card-body card-dashboard">
+              <div class="table-responsive">
+                <table class="table zero-configuration">
+                  <thead>
+                    <tr>
+                      <th>ردیف</th>
+                      <th>عنوان دوره</th>
+                      <th>مقطع</th>
+                      <th>عنوان درس</th>
+                      <th>واحد عملی</th>
+                      <th>واحد نظری</th>
+                      <!-- <th>ساعت عملی</th>
                                         <th>ساعت نظری</th>
                                         <th>تعداد گروه</th> -->
-                                        <th>عملیات</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for lesson in lessons %}
-                                    <tr>
-                                        <td>{{ lesson.course_title }}</td>
-                                        <td>{{ lesson.grade }}</td>
-                                        <td>{{ lesson.lesson_title }}</td>                                        
-                                        <td>{{ lesson.practical_unit }}</td>
-                                        <td>{{ lesson.theorical_unit }}</td>                                        
-                                        <!-- <td>{{ lesson.practical_time }}</td>
+                      <th>عملیات</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for lesson in lessons %}
+                    <tr>
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ lesson.course_title }}</td>
+                      <td>{{ lesson.grade }}</td>
+                      <td>{{ lesson.lesson_title }}</td>
+                      <td>{{ lesson.practical_unit }}</td>
+                      <td>{{ lesson.theorical_unit }}</td>
+                      <!-- <td>{{ lesson.practical_time }}</td>
                                         <td>{{ lesson.theorical_time }}</td>
                                         <td>{{ lesson.group }}</td> -->
-                                        <td>
-                                            <a href="{% url 'teacher_detail'  teacher.id  %}"><i class="badge-circle badge-circle-light-secondary bx bx-show font-medium-1"></i></a>
-                                            <a href="{% url 'lesson_edit'  lesson.id  %}"><i class="badge-circle badge-circle-light-secondary bx bx-edit font-medium-1"></i></a>
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                      <td>
+                        <a href="{% url 'teacher_detail'  teacher.id  %}"><i
+                            class="badge-circle badge-circle-light-secondary bx bx-show font-medium-1"></i></a>
+                        <a href="{% url 'lesson_edit'  lesson.id  %}"><i
+                            class="badge-circle badge-circle-light-secondary bx bx-edit font-medium-1"></i></a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
   </section>
 </div>
@@ -196,5 +205,5 @@
 
 <!-- JS -->
 {% block javascript %}
-    
+
 {% endblock %}

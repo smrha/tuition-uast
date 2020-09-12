@@ -40,9 +40,10 @@
                                 <table class="table zero-configuration">
                                     <thead>
                                         <tr>
+                                            <th>ردیف</th>
                                             <th>نام</th>
                                             <th>نام خانوادگی</th>
-                                            <th>کد ملی</th>
+                                            <!-- <th>کد ملی</th> -->
                                             <th>رشته تحصیلی</th>
                                             <th>آخرین مدرک تحصیلی</th>
                                             <th>عملیات</th>
@@ -51,9 +52,10 @@
                                     <tbody>
                                         {% for teacher in teachers %}
                                         <tr>
+                                            <td>{{ forloop.counter }}</td>
                                             <td>{{ teacher.first_name }}</td>
                                             <td>{{ teacher.last_name }}</td>
-                                            <td>{{ teacher.userprofile.n_id }}</td>
+                                            <!-- <td>{{ teacher.userprofile.n_id }}</td> -->
                                             <td>{{ teacher.userprofile.field }}</td>
                                             <td>{{ teacher.userprofile.degree }}</td>
                                             <td>
