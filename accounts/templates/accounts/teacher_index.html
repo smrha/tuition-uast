@@ -131,7 +131,7 @@
                       </thead>
                       <tbody>
                           {% for lesson in lessons %}
-                            {% if lesson.lessonaccepted is not None %}
+                            {% if lesson.lessonaccepted %}
                               <tr>
                                   <td>{{ forloop.counter }}</td>
                                   <td>{{ lesson.course_title }}</td>
@@ -149,19 +149,19 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>                                        
-                            <td>{{ lesson.practical_unit }}</td>
-                            <td>{{ lesson.theorical_unit }}</td>
-                            <td>{{ lesson.practical_time }}</td>
-                            <td>{{ lesson.theorical_time }}</td>
-                            <td>{{ lesson.group }}</td>
+                            <td>جمع کل</td>
+                            <td>{{ prac_total_unit }}</td>
+                            <td>{{ theo_total_unit }}</td>
+                            <td>{{ prac_total_time }}</td>
+                            <td>{{ theo_total_time }}</td>
+                            <td>{{ total_group }}</td>
                         </tr>
                   </table>
                   <h6>
                     ماده 1) مدت قرارداد
                   </h6>
                   <p>
-                    این قرارداد از تاریخ 1398/10/01 لغایت 1399/06/31 به مدت یک نیمسال /پودمان تحصیلی به مدت 17 هفته منعقد می
+                    این قرارداد از تاریخ 1398/11/26 لغایت 1399/06/31 به مدت یک نیمسال /پودمان تحصیلی به مدت 17 هفته منعقد می
                     گردد .
                   </p>
                   <h6>
@@ -169,8 +169,8 @@
                   </h6>
                   <p>
                     1- میزان حق التدریس با توجه به آیین نامه حق التدریس در دانشگاه ها و موسسات آموزش عالی کشور برای هر ساعت
-                    تدریس دروس نظری {{ request.user.userprofile.practical_pay }} ریال و برای هر ساعت دروس علمی
-                    {{ request.user.userprofile.theorical_pay }} ریال می باشد .
+                    تدریس دروس نظری {{ request.user.userprofile.theorical_pay }} ریال و برای هر ساعت دروس علمی
+                    {{ request.user.userprofile.practical_pay }} ریال می باشد .
                   </p>
                   <p>
                     که در مقابل گواهی انجام کار از طرف مرکز در پایان نیمسال تحصیلی ( نیمسال / پودمان ) و پس از اعمال کسورات
