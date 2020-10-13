@@ -454,3 +454,42 @@ input:disabled {
     text-align: justify;
     text-justify: inter-word;
 }
+
+.br-st {
+    border: 2px solid;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    margin: 25px;
+}
+
+#sign1{
+    height: 250px;
+    width: 50%;
+    float: right;
+}
+
+#sign2{
+    height: 250px;
+    width: 50%;
+    float: left;
+}
+
+#p-sign {
+    text-align: center;
+    margin: 0;
+}
+
+#img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* #div2{
+    height: 30px;
+    width: 90%;
+    outline: solid 1px #000000;
+    background-color: #66CC00;
+    float: left;
+}​ */

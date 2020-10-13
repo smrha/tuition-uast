@@ -99,12 +99,28 @@ def teacher_edit(request, pk):
         return render(request, 'accounts/teacher_edit.html', context)
 
 def print_tuition(request, pk):
-    teacher = User.objects.get(id=pk)
-    # TODO calculate sum
     lessons = Lesson.objects.filter(user=pk)
+    teacher = User.objects.get(id=pk)
+    theo_total_unit = 0
+    prac_total_unit = 0
+    theo_total_time = 0
+    prac_total_time = 0
+    total_group = 0
+    for lesson in lessons:
+        if Lessonaccepted.objects.filter(lesson=lesson).exists():
+            theo_total_unit += (lesson.theorical_unit * lesson.group)
+            prac_total_unit += (lesson.practical_unit * lesson.group)
+            theo_total_time += (lesson.theorical_time * lesson.group)
+            prac_total_time += (lesson.practical_time * lesson.group)
+            total_group += lesson.group
     context = {
         'teacher': teacher,
         'lessons': lessons,
+        'theo_total_unit': theo_total_unit,
+        'prac_total_unit': prac_total_unit,
+        'theo_total_time': theo_total_time,
+        'prac_total_time': prac_total_time,
+        'total_group': total_group
     }
     return render(request, 'accounts/print_tuition.html', context)
 
