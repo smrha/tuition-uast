@@ -22,6 +22,11 @@ GRADE_CHOICES = (
     ('کاردانی', 'کاردانی'),
     ('کارشناسی', 'کارشناسی')
 )
+IS_INTERSHIP = (
+    ('نظری - عملی' , 'نظری - عملی'),
+    ('کارورزی' , 'کارورزی'),
+)
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -44,6 +49,7 @@ class UserProfile(models.Model):
     sex = models.CharField(max_length=8, choices=SEX_CHOICES, default='آقا')
     theorical_pay = models.IntegerField(default=0)
     practical_pay = models.IntegerField(default=0)
+    intership_pay = models.IntegerField(default=0)
     sign = models.ImageField(null=True, blank=True)
 
 def create_profile(sender, **kwargs):
@@ -62,6 +68,7 @@ class Lesson(models.Model):
     theorical_time = models.IntegerField(default=0)
     practical_time = models.IntegerField(default=0)
     group = models.IntegerField(default=1)
+    is_intership = models.CharField(max_length=16, choices=IS_INTERSHIP, default='نظری - عملی')
 
 class Lessonaccepted(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

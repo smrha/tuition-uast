@@ -106,6 +106,21 @@
               </div>
               <hr>
               <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">حق التدریس نظری</label>
+                  <div>{{ teacher.userprofile.theorical_pay }} ریال</div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">حق التدریس عملی</label>
+                  <div>{{ teacher.userprofile.practical_pay }} ریال</div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                  <label for="">حق التدریس کارورزی</label>
+                  <div>{{ teacher.userprofile.intership_pay }} ریال</div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12">
                   <label for="">شماره تلفن</label>
                   <div>{{ teacher.userprofile.phone }}</div>
@@ -166,9 +181,6 @@
                       <th>عنوان درس</th>
                       <th>واحد عملی</th>
                       <th>واحد نظری</th>
-                      <!-- <th>ساعت عملی</th>
-                                        <th>ساعت نظری</th>
-                                        <th>تعداد گروه</th> -->
                       <th>عملیات</th>
                     </tr>
                   </thead>

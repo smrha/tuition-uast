@@ -152,6 +152,7 @@ def lesson_add(request, pk):
                 practical_unit=cd['practical_unit'],
                 theorical_time=cd['theorical_time'],
                 practical_time=cd['practical_time'],
+                is_intership=cd['is_intership'],
                 group=cd['group']
             )
             new.save()

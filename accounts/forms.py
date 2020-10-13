@@ -20,6 +20,10 @@ GRADE_CHOICES = (
     ('کاردانی', 'کاردانی'),
     ('کارشناسی', 'کارشناسی')
 )
+IS_INTERSHIP = (
+    ('نظری - عملی' , 'نظری - عملی'),
+    ('کارورزی' , 'کارورزی'),
+)
     
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(
@@ -113,11 +117,17 @@ class TeacherEditForm(forms.ModelForm):
         'placeholder':'حق التدریس عملی'
     }))
 
+    intership_pay = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class':'form-control text-left',
+        'placeholder':'حق التدریس کارورزی'
+    }))
+
     class Meta():
         model = UserProfile
         fields = [
             'p_id', 'f_name', 'n_id', 'birthday', 'file_number', 'degree', 'university', 'field', 'rank',
-            'job', 'address', 't_year', 'phone', 'mobile', 'account', 'bank', 'sex', 'theorical_pay', 'practical_pay'
+            'job', 'address', 't_year', 'phone', 'mobile', 'account', 'bank', 'sex', 
+            'theorical_pay', 'practical_pay', 'intership_pay'
         ]
 
 class SignForm(forms.ModelForm):
@@ -134,7 +144,6 @@ class SignForm(forms.ModelForm):
 
 
 class LessonForm(forms.ModelForm):
-    # user = forms.CharField(required=False)
     course_title = forms.CharField(widget=forms.TextInput(attrs={
         'class':'form-control text-left',
         'placeholder':'عنوان دوره'
@@ -163,6 +172,10 @@ class LessonForm(forms.ModelForm):
         'class':'form-control text-left',
         'placeholder':'ساعت عملی'
     }))
+    is_intership = forms.ChoiceField(widget=forms.Select(attrs={
+        'class':'form-control text-left',
+        'placeholder':'نوع دوره'
+    }), choices=IS_INTERSHIP)
     group = forms.IntegerField(widget=forms.NumberInput(attrs={
         'class':'form-control text-left',
         'placeholder':'گروه'
@@ -171,5 +184,5 @@ class LessonForm(forms.ModelForm):
         model = Lesson
         fields = [
             'course_title', 'grade', 'lesson_title', 'theorical_unit', 'theorical_time',
-            'practical_unit', 'practical_time', 'group'
+            'practical_unit', 'practical_time', 'group', 'is_intership'
         ]
