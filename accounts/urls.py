@@ -14,4 +14,6 @@ urlpatterns = [
     path('lesson/edit/<int:pk>', views.lesson_edit, name='lesson_edit'),
     path('lesson/accept/<int:pk>', views.lesson_accept, name='lesson_accept'),
     path('sign/', views.teacher_sign, name='teacher_sign'),
+    # Term URLS
+    # path('term/', views.terms_index, name='terms_index'),
 ]
