@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 
 <!-- TITLE -->
-{% block title %}title{% endblock %}
+{% block title %}کاربرگ ها{% endblock %}
 
 <!-- CSS -->
 {% block stylesheet %}
@@ -11,12 +11,12 @@
 <!-- LINKS -->
 {% block links %}
 <div class="col-12">
-    <h5 class="content-header-title float-left pr-1">ترم</h5>
+    <h5 class="content-header-title float-left pr-1">کاربرگ ها</h5>
     <div class="breadcrumb-wrapper">
       <ol class="breadcrumb p-0 mb-0">
         <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
         </li>
-        <li class="breadcrumb-item active">ترم</li>
+        <li class="breadcrumb-item active">کاربرگ ها</li>
       </ol>
     </div>
 </div>
@@ -30,10 +30,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">ترم ها</h4>
-            <div class="text-right">
-              <a href="{% url 'term_add' %}" class="btn btn-primary mr-4">ترم جدید</a>
-            </div>
+            <h4 class="card-title">لیست کاربرگ ها</h4>
           </div>
           <div class="card-content">
             <div class="card-body card-dashboard">
@@ -42,32 +39,29 @@
                     <thead>
                         <tr>
                             <th>ردیف</th>
-                            <th>عنوان ترم</th>
-                            <th>تارخ شروع</th>
-                            <th>تاریخ پایان</th>
-                            <th>وضعیت</th>
+                            <th>عنوان کاربرگ</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for term in terms %}
                         <tr>
-                            <td>{{ forloop.counter }}</td>
-                            <td>{{ term.name }}</td>
-                            <td>{{ term.start_date|date:"Y/m/d" }}</td>
-                            <td>{{ term.end_date|date:"Y/m/d" }}</td>
-                            {% if term.is_active %}
-                              <td>فعال</td>
-                            {% else %}
-                              <td>غیر فعال</td>
-                            {% endif %}
+                            <td>1</td>
+                            <td>ارزیابی نهایی پروژه</td>
                             <td>
                                 <a href="{% url 'term_add' %}"><i class="badge-circle badge-circle-light-secondary bx bx-printer font-medium-1"></i></a>
                                 <a href="{% url 'term_add' %}"><i class="badge-circle badge-circle-light-secondary bx bx-show font-medium-1"></i></a>
                                 <a href="{% url 'term_add' %}"><i class="badge-circle badge-circle-light-secondary bx bx-edit font-medium-1"></i></a>
                             </td>
                         </tr>
-                        {% endfor %}
+                        <tr>
+                          <td>2</td>
+                          <td>ارزیابی نهایی کارورز</td>
+                          <td>
+                              <a href="{% url 'term_add' %}"><i class="badge-circle badge-circle-light-secondary bx bx-printer font-medium-1"></i></a>
+                              <a href="{% url 'term_add' %}"><i class="badge-circle badge-circle-light-secondary bx bx-show font-medium-1"></i></a>
+                              <a href="{% url 'term_add' %}"><i class="badge-circle badge-circle-light-secondary bx bx-edit font-medium-1"></i></a>
+                          </td>
+                      </tr>
                     </tbody>
                 </table>
               </div>

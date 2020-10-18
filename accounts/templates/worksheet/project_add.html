@@ -1,0 +1,169 @@
+{% extends 'base/base.html' %}
+
+<!-- TITLE -->
+{% block title %}افزودن کاربرگ ارزیابی پروژه{% endblock %}
+
+<!-- CSS -->
+{% block stylesheet %}
+    
+{% endblock %}
+
+<!-- LINKS -->
+{% block links %}
+<div class="col-12">
+    <h5 class="content-header-title float-left pr-1">کاربرگ ها</h5>
+    <div class="breadcrumb-wrapper">
+      <ol class="breadcrumb p-0 mb-0">
+        <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+        </li>
+        <li class="breadcrumb-item active">کاربرگ ها</li>
+        <li class="breadcrumb-item active">پروژه</li>
+        <li class="breadcrumb-item active">کاربرگ ارزیابی پروژه جدید</li>
+      </ol>
+    </div>
+</div>
+{% endblock %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="content-body">
+  <section id="basic-datatable">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"> افزودن کاربرگ ارزیابی پروژه جدید</h4>
+          </div>
+          <div class="card-content">
+            <div class="card-body card-dashboard">
+              <form class="form form-vertical" method='POST'>
+                {% csrf_token %}
+                <div class="form-body">
+                  <div class="row form-group">
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">نام</label>
+                      <div>{{ form.first_name }}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">نام خانوادگی</label>
+                      <div>{{ form.last_name }}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">شماره دانشجویی</label>
+                      <div>{{ form.std_id }}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                      <label for="">شماره ملی</label>
+                      <div>{{ form.n_id }}</div>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">رشته تحصیلی</label>
+                      <div>{{ form.field }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">مقطع تحصیلی</label>
+                      <div>{{ form.degree }}</div>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">تاریخ شروع ترم</label>
+                      <div>{{ form.start_date }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">تاریخ پایان ترم</label>
+                      <div>{{ form.end_date }}</div>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">ارزیابی گزارشات هفتگی و ماهانه  (20 درصد کل امتیاز)</label>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      {{ form.value_question1 }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      {{ form.desc_question1 }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">ارزیابی توسط مربی (فرم شماره 3) (40 درصد کل امتیاز)</label>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      {{ form.value_question2 }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      {{ form.desc_question2 }}
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">ارزشیابی توسط مدرس (فرم شماره 4) (40 درصد کل امتیاز)</label>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      {{ form.value_question3 }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      {{ form.desc_question3 }}
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">گزارشات جامع و پایانی براساس شیوه نامه مربوط (20 درصد کل امتیاز)</label>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      {{ form.value_question4 }}
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      {{ form.desc_question4 }}
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">نمره به عدد</label>
+                      <div>{{ form.score }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">نمره به حروف</label>
+                      <div>{{ form.score_letters }}</div>
+                    </div>
+                  </div>
+                  {{ form.errors }}
+                  <div class="row form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12  d-flex justify-content-end">
+                      <button class="btn btn-primary mr-1 mb-1" type="submit">ذخیره</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+<!-- JS -->
+{% block javascript %}
+<script type="text/javascript">
+  $('#date1').MdPersianDateTimePicker({
+          targetTextSelector: '#date1',
+          targetDateSelector: '#inputDate1-1',
+          dateFormat: 'yyyy-MM-dd hh:mm:ss',
+          englishNumber: true,
+        });
+  $('#date2').MdPersianDateTimePicker({
+    targetTextSelector: '#date2',
+    targetDateSelector: '#inputDate2-2',
+    dateFormat: 'yyyy-MM-dd hh:mm:ss',
+    englishNumber: true,
+  });
+</script>
+{% endblock %}

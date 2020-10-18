@@ -1,0 +1,76 @@
+{% extends 'base/base.html' %}
+
+<!-- TITLE -->
+{% block title %}کاربرگ های ارزیابی نهایی پروژه{% endblock %}
+
+<!-- CSS -->
+{% block stylesheet %}
+    
+{% endblock %}
+
+<!-- LINKS -->
+{% block links %}
+<div class="col-12">
+    <h5 class="content-header-title float-left pr-1">ارزیابی پروژه</h5>
+    <div class="breadcrumb-wrapper">
+      <ol class="breadcrumb p-0 mb-0">
+        <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+        </li>
+        <li class="breadcrumb-item active">کاربرگ ها</li>
+        <li class="breadcrumb-item active">ارزیابی پروژه</li>
+      </ol>
+    </div>
+</div>
+{% endblock %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="content-body">
+  <section id="basic-datatable">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">لیست کاربرگ های ارزیابی پروژه</h4>
+          </div>
+          <div class="card-content">
+            <div class="card-body card-dashboard">
+              <div class="table-responsive">
+                <table class="table zero-configuration">
+                    <thead>
+                        <tr>
+                            <th>ردیف</th>
+                            <th>نام</th>
+                            <th>نام خانوادگی</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for project in projects %}
+                        <tr>
+                          <td>{{ forloop.counter }}</td>
+                          <td>{{ project.first_name }}</td>
+                          <td>{{ project.last_name }}</td>
+                          <td>
+                              <!-- <a href="{% url 'term_add' %}"><i class="badge-circle badge-circle-light-secondary bx bx-printer font-medium-1"></i></a> -->
+                              <a href="{% url 'project_show' project.id %}"><i class="badge-circle badge-circle-light-secondary bx bx-show font-medium-1"></i></a>
+                              <!-- <a href="{% url 'term_add' %}"><i class="badge-circle badge-circle-light-secondary bx bx-edit font-medium-1"></i></a> -->
+                          </td>
+                        </tr>
+                      {% endfor %}  
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+<!-- JS -->
+{% block javascript %}
+    
+{% endblock %}

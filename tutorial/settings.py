@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'terms.apps.TermsConfig',
+    'worksheets.apps.WorksheetsConfig',
     'import_export'
 ]
 

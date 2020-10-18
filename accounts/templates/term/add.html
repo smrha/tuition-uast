@@ -1,0 +1,93 @@
+{% extends 'base/base.html' %}
+
+<!-- TITLE -->
+{% block title %}اضافه کردن ترم جدید{% endblock %}
+
+<!-- CSS -->
+{% block stylesheet %}
+    
+{% endblock %}
+
+<!-- LINKS -->
+{% block links %}
+<div class="col-12">
+    <h5 class="content-header-title float-left pr-1">ترم جدید</h5>
+    <div class="breadcrumb-wrapper">
+      <ol class="breadcrumb p-0 mb-0">
+        <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+        </li>
+        <li class="breadcrumb-item active">ترم</li>
+        <li class="breadcrumb-item active">ترم جدید</li>
+      </ol>
+    </div>
+</div>
+{% endblock %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="content-body">
+  <section id="basic-datatable">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">افزودن ترم جدید</h4>
+          </div>
+          <div class="card-content">
+            <div class="card-body card-dashboard">
+              <form class="form form-vertical" method="POST">
+                {% csrf_token %}
+                <div class="form-body">
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">عنوان ترم</label>
+                      <div>{{ form.name }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">وضعیت ترم</label>
+                      <div>{{ form.is_active }}</div>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">تاریخ شروع ترم</label>
+                      <div>{{ form.start_date }}</div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                      <label for="">تاریخ پایان ترم</label>
+                      <div>{{ form.end_date }}</div>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12  d-flex justify-content-end">
+                      <button class="btn btn-primary mr-1 mb-1" type="submit">ذخیره</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+<!-- JS -->
+{% block javascript %}
+<script type="text/javascript">
+  $('#date1').MdPersianDateTimePicker({
+          targetTextSelector: '#date1',
+          targetDateSelector: '#inputDate1-1',
+          dateFormat: 'yyyy-MM-dd hh:mm:ss',
+          englishNumber: true,
+        });
+  $('#date2').MdPersianDateTimePicker({
+    targetTextSelector: '#date2',
+    targetDateSelector: '#inputDate2-2',
+    dateFormat: 'yyyy-MM-dd hh:mm:ss',
+    englishNumber: true,
+  });
+</script>
+{% endblock %}
